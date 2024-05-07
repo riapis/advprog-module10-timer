@@ -10,7 +10,7 @@ use std::{
     time::Duration,
 };
 // The timer we wrote in the previous section:
-use timer_future::TimerFuture;
+use timer::TimerFuture;
 
 /// Task executor that receives tasks off of a channel and runs them.
 struct Executor {
@@ -99,10 +99,10 @@ fn main() {
 
     // Spawn a task to print before and after waiting on a timer.
     spawner.spawn(async {
-        println!("Fathan's computer: howdy!");
+        println!("Fari's computer: howdy!");
         // Wait for our timer future to complete after two seconds.
         TimerFuture::new(Duration::new(2, 0)).await;
-        println!("Fathan's computer: done!");
+        println!("Fari's computer: done!");
     });
 
     // Drop the spawner so that our executor knows it is finished and won't
@@ -112,4 +112,5 @@ fn main() {
     // Run the executor until the task queue is empty.
     // This will print "howdy!", pause, and then print "done!".
     executor.run();
+    println!("Fari's computer: bonjour!");
 }
